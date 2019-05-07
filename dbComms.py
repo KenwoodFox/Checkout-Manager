@@ -31,3 +31,6 @@ def makeTable(table):
     
     c.execute('''CREATE TABLE items (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text, location text)''')
     
+#def move(itemName, quantity, direction):
+	#find the line in the table items that matches the item name 'itemname"
+	#move items from one table to another
