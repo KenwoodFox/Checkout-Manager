@@ -4,6 +4,7 @@ from tkinter import scrolledtext
 import sqlite3
 import datetime
 import dbComms as db
+import sys 
 
 dateRaw = datetime.datetime.now()
 dateNow = dateRaw.strftime("%Y-%m-%d %H:%M")
@@ -13,7 +14,8 @@ home.title("Inventory Management Tool Version 0.1Alpha") #Set title
 
 # Create the database & it's table 
 conn, c = db.initDB()
-db.makeTable("items")
+#db.makeTable("items")
+db.initDB()
 
 homeTabs = ttk.Notebook(home) #add tabs to home
 checkTab = ttk.Frame(homeTabs) #add tab for checking in and out items
@@ -25,7 +27,7 @@ homeTabs.pack(expand=1, fill='both')
 
 menu = Menu(home) #put a menu on home
 dropdownExit = Menu(menu) #add a exit button
-dropdownExit.add_command(label='Exit')
+dropdownExit.add_command(label='Exit', command=exit)
 menu.add_cascade(label='File', menu=dropdownExit) #order exit under file
 home.config(menu=menu)
 
@@ -61,10 +63,22 @@ memoTxt.grid(column=6,row=3)
 setOfTxt.grid(column=8,row=3)
 
 def newItem():	#run if the new item button is clicked
-	newItemList =[(itemNameTxt.get(), conditionTxt.get(), memoTxt.get(), setOfTxt.get(), dateNow, 'fixthis', 'fixthis', 'in')]
+	newItemList =[(itemNameTxt.get(), conditionTxt.get(), memoTxt.get(), setOfTxt.get(), dateNow, 'nobody', 'nobody', 'in')]
 	
 	#insert data
 	c.executemany('INSERT INTO items VALUES (?,?,?,?,?,?,?,?)', newItemList)
+	print ("Added new item with data: ")
+	print (newItemList)
+	updateLists()
+
+def updateLists():
+	c.execute('SELECT * FROM items')
+	itemsOutWindow.insert(INSERT,c.fetchall())
+	
+def exit():
+	conn.commit() #commit database changes
+	conn.close()
+	sys.exit()
 
 setNewItem = Button(itemTab, text="Add Item", command=newItem)
 setNewItem.grid(column=2, row=1)
