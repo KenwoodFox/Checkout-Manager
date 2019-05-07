@@ -12,7 +12,7 @@ home = Tk() #Home is an instance of Tk
 home.title("Inventory Management Tool Version 0.1Alpha") #Set title
 conn = sqlite3.connect('database.db') #establish a connection with the database
 c = conn.cursor() #create a cursor object
-c.execute('''CREATE TABLE items (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text, location text)''')
+#c.execute('''CREATE TABLE items (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text, location text)''')
 
 homeTabs = ttk.Notebook(home) #add tabs to home
 checkTab = ttk.Frame(homeTabs) #add tab for checking in and out items
