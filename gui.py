@@ -6,6 +6,14 @@ import datetime
 import dbComms as db
 import sys 
 
+CONDITIONS = [
+"Factory New",
+"Minimal Wear",
+"Field-Tested",
+"Well-Worn",
+"Battle Scarred"
+] #Prepare quality conditions
+
 home = Tk() #Home is an instance of Tk
 home.title("Inventory Management Tool Version 0.1Alpha") #Set title
 
@@ -54,14 +62,14 @@ itemTree.heading("recepiant", text="Recepiant")
 itemTree.heading("memo", text="Memo")
 itemTree.heading("date", text="Date")
 
-itemTree.insert("" , 0, text=1, values=("Example Item Name","Jeff","Jeff","No Memo",dateNow))
+itemTree.insert("" , 0, text="REEE", values=("Example Item Name","Jeff","Jeff","No Memo","qty",dateNow))
 
-id2 = itemTree.insert("", 1, "dir2", text="Dir 2")
-itemTree.insert(id2, "end", "dir 2", text="sub dir 2", values=("2A","2B"))
+#id2 = itemTree.insert("", 1, "dir2", text="Dir 2")
+#itemTree.insert(id2, "end", "dir 2", text="sub dir 2", values=("2A","2B"))
 
 ##alternatively:
-itemTree.insert("", 3, "dir3", text="Dir 3")
-itemTree.insert("dir3", 3, text=" sub dir 3",values=("3A"," 3B"))
+#itemTree.insert("", 3, "dir3", text="Dir 3")
+#itemTree.insert("dir3", 3, text=" sub dir 3",values=("3A"," 3B"))
 
 itemTree.pack()
 
@@ -70,23 +78,27 @@ itemTree.pack()
 itemNameLbl = Label(itemTab, text="Item Name")
 conditionLbl = Label(itemTab, text="Condition")
 memoLbl = Label(itemTab, text="Memo")
-setOfLbl = Label(itemTab, text="Number")
-itemNameLbl.grid(column=1, row=3)
-conditionLbl.grid(column=3, row=3)
-memoLbl.grid(column=5, row=3)
-setOfLbl.grid(column=7, row=3)
+setOfLbl = Label(itemTab, text="Qry of Items")
+itemNameLbl.grid(column=1, row=2)
+conditionLbl.grid(column=1, row=3)
+memoLbl.grid(column=1, row=4)
+setOfLbl.grid(column=1, row=5)
 
-itemNameTxt = Entry(itemTab,width=15)
-conditionTxt = Entry(itemTab,width=15)
-memoTxt = Entry(itemTab,width=15)
-setOfTxt = Entry(itemTab,width=15)
-itemNameTxt.grid(column=2,row=3)
-conditionTxt.grid(column=4,row=3)
-memoTxt.grid(column=6,row=3)
-setOfTxt.grid(column=8,row=3)
+imputDropDown = StringVar(home)
+imputDropDown.set(CONDITIONS[0]) # default value
+
+itemNameTxt = Entry(itemTab,width=15) #Normal Text Box
+conditionMenu = OptionMenu(home, imputDropDown, *CONDITIONS) #Dropdown box
+memoTxt = Entry(itemTab,width=15) #Normal Text Box
+setOfBox = Spinbox(itemTab, from_=0, to=10,width=15)
+itemNameTxt.grid(column=2,row=2)
+conditionMenu.grid(column=2, row=3) #This needs to be fixed!!!!!
+memoTxt.grid(column=2,row=4)
+setOfBox.grid(column=2,row=5)
+conditionMenu.pack()
 
 def newItem():	#run if the new item button is clicked
-	newItemList =[(itemNameTxt.get(), conditionTxt.get(), memoTxt.get(), setOfTxt.get(), dateNow, 'nobody', 'nobody', 'in')]
+	newItemList =[(itemNameTxt.get(), imputDropDown.get(), memoTxt.get(), setOfBox.get(), dateNow, 'nobody', 'nobody', 'in')]
 	
 	#insert data
 	c.executemany('INSERT INTO items VALUES (?,?,?,?,?,?,?,?)', newItemList)
@@ -96,10 +108,11 @@ def newItem():	#run if the new item button is clicked
 
 def updateLists():
 	c.execute('SELECT * FROM items') #Select everything
-	#itemsOutWindow.insert(INSERT,c.fetchall())
+	print(c.fetchall())
 	
 def exit():
 	conn.commit() #commit database changes
+	print("Init to Comit it")
 	conn.close()
 	sys.exit()
 
@@ -107,4 +120,4 @@ setNewItem = Button(itemTab, text="Add Item", command=newItem)
 setNewItem.grid(column=2, row=1)
 
 home.mainloop()
-conn.close() #close connection
+#conn.close() #close connection
