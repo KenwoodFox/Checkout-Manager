@@ -6,11 +6,11 @@ import datetime
 import dbComms as db
 import sys 
 
-dateRaw = datetime.datetime.now()
-dateNow = dateRaw.strftime("%Y-%m-%d %H:%M")
-
 home = Tk() #Home is an instance of Tk
 home.title("Inventory Management Tool Version 0.1Alpha") #Set title
+
+dateRaw = datetime.datetime.now()
+dateNow = dateRaw.strftime("%Y-%m-%d %H:%M") #get the date in dateNow
 
 # Create the database & it's table 
 conn, c = db.initDB()
@@ -39,11 +39,34 @@ chkInButton.grid(column=2, row=2)
 chkOutButton = Button(checkTab, text="Check out an item", padx=5, pady=5)
 chkOutButton.grid(column=4, row=2)
 
-itemsOutWindow = scrolledtext.ScrolledText(checkTab,width=25,height=40)
-itemsOutWindow.grid(column=2, row=3)
+#tree
+itemTree = ttk.Treeview(home)
+
+itemTree["columns"]=("items","issuer","recepiant","memo","date")
+itemTree.column("items", width=100 )
+itemTree.column("issuer", width=100)
+itemTree.column("recepiant", width=100)
+itemTree.column("memo", width=100)
+itemTree.column("date", width=100)
+itemTree.heading("items", text="Items")
+itemTree.heading("issuer", text="Issuer")
+itemTree.heading("recepiant", text="Recepiant")
+itemTree.heading("memo", text="Memo")
+itemTree.heading("date", text="Date")
+
+itemTree.insert("" , 0, text=1, values=("Example Item Name","Jeff","Jeff","No Memo",dateNow))
+
+id2 = itemTree.insert("", 1, "dir2", text="Dir 2")
+itemTree.insert(id2, "end", "dir 2", text="sub dir 2", values=("2A","2B"))
+
+##alternatively:
+itemTree.insert("", 3, "dir3", text="Dir 3")
+itemTree.insert("dir3", 3, text=" sub dir 3",values=("3A"," 3B"))
+
+itemTree.pack()
+
 
 #Next Page
-
 itemNameLbl = Label(itemTab, text="Item Name")
 conditionLbl = Label(itemTab, text="Condition")
 memoLbl = Label(itemTab, text="Memo")
@@ -72,8 +95,8 @@ def newItem():	#run if the new item button is clicked
 	updateLists()
 
 def updateLists():
-	c.execute('SELECT * FROM items')
-	itemsOutWindow.insert(INSERT,c.fetchall())
+	c.execute('SELECT * FROM items') #Select everything
+	#itemsOutWindow.insert(INSERT,c.fetchall())
 	
 def exit():
 	conn.commit() #commit database changes
