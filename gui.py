@@ -1,18 +1,19 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import scrolledtext
-
 import sqlite3
-
 import datetime
+import dbComms as db
+
 dateRaw = datetime.datetime.now()
 dateNow = dateRaw.strftime("%Y-%m-%d %H:%M")
 
 home = Tk() #Home is an instance of Tk
 home.title("Inventory Management Tool Version 0.1Alpha") #Set title
-conn = sqlite3.connect('database.db') #establish a connection with the database
-c = conn.cursor() #create a cursor object
-#c.execute('''CREATE TABLE items (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text, location text)''')
+
+# Create the database & it's table 
+conn, c = db.initDB()
+db.makeTable("items")
 
 homeTabs = ttk.Notebook(home) #add tabs to home
 checkTab = ttk.Frame(homeTabs) #add tab for checking in and out items
@@ -60,13 +61,10 @@ memoTxt.grid(column=6,row=3)
 setOfTxt.grid(column=8,row=3)
 
 def newItem():	#run if the new item button is clicked
-	itemname = itemNameTxt.get()
-	condition = conditionTxt.get()
-	memo = memoTxt.get()
-	setOf = setOfTxt.get()
+	newItemList =[(itemNameTxt.get(), conditionTxt.get(), memoTxt.get(), setOfTxt.get(), dateNow, 'fixthis', 'fixthis', 'in')]
 	
 	#insert data
-	c.execute("INSERT INTO items VALUES (itemName, condition, Memo, setOf, dateNow, 'fixthis', 'fixthis', 'in')")
+	c.executemany('INSERT INTO items VALUES (?,?,?,?,?,?,?,?)', newItemList)
 
 setNewItem = Button(itemTab, text="Add Item", command=newItem)
 setNewItem.grid(column=2, row=1)
