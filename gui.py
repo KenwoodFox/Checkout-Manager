@@ -1,7 +1,16 @@
 import dbDo as dbDo
+import src as src
 from tkinter import *
 from tkinter import ttk
-import sys 
+import sys
+
+CONDITIONS = [
+"Factory New",
+"Minimal Wear",
+"Field-Tested",
+"Well-Worn",
+"Battle Scarred"
+] #Prepare quality conditions
 
 home = Tk() #Home is an instance of Tk
 home.title("Inventory Management Tool Version 0.1Alpha") #Set title
@@ -15,9 +24,12 @@ homeTabs.add(itemTab, text='Inventory') #add a tab
 homeTabs.pack(expand=1, fill='both')
 
 menu = Menu(home) #put a menu on home
+loadNewFile = Menu(menu)
+loadNewFile.add_command(label='Open', command=src.loadNewFile("manifest"))
 dropdownExit = Menu(menu) #add a exit button
 dropdownExit.add_command(label='Exit', command=exit)
 menu.add_cascade(label='File', menu=dropdownExit) #order exit under file
+menu.add_cascade(label='Database', menu=loadNewFile)
 home.config(menu=menu)
 
 welcomeText = Label(checkTab, text="Select Check in or Check out")
@@ -43,7 +55,7 @@ itemTree.heading("recepiant", text="Recepiant")
 itemTree.heading("memo", text="Memo")
 itemTree.heading("date", text="Date")
 
-itemTree.insert("" , 0, text="REEE", values=("Example Item Name","Jeff","Jeff","No Memo","qty",dateNow))
+itemTree.insert("" , 0, text="REEE", values=("Example Item Name","Jeff","Jeff","No Memo","qty","No date as of this date"))
 
 #id2 = itemTree.insert("", 1, "dir2", text="Dir 2")
 #itemTree.insert(id2, "end", "dir 2", text="sub dir 2", values=("2A","2B"))
@@ -78,8 +90,8 @@ memoTxt.grid(column=2,row=4)
 setOfBox.grid(column=2,row=5)
 conditionMenu.pack()
 
-setNewItem = Button(itemTab, text="Add Item", command=dbDo.addItem("null", "manifest"):)
-setNewItem.grid(column=2, row=1)
+#setNewItem = Button(itemTab, text="Add Item", command=dbDo.addItem("null", "manifest"):)
+#setNewItem.grid(column=2, row=1)
 
 home.mainloop()
 #conn.close() #close connection
