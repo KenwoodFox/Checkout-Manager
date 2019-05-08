@@ -15,13 +15,13 @@ def initDB(fileInQuestion): #database initDB
 	else: #it does not exist
 	
 		conn = sqlite3.connect(fileInQuestion + '.db') #THIS DOES NOT WORK
-		c = conn.cursor()
+		c = conn.cur/sor()
 		print("Did not find database, making new...") #alert console
 		c.execute('''CREATE TABLE itemLoggedIn (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text)''') #create a table for items in
 		c.execute('''CREATE TABLE itemLoggedOut (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text)''') #create a table for items out
-	return conn, c
+		return conn, c
 
-def addItem(content):
+def addItem(content, database):
 	c.executemany('INSERT INTO itemLoggedIn VALUES (?,?,?,?,?,?,?)', content) #insert content list into in
 	conn.commit() #commit the change to the database
 
@@ -39,3 +39,6 @@ def query(content):
 	#receive a list
 	#select all matching entries
 	#return a much larger list
+	
+#def checkout
+#def checkin
