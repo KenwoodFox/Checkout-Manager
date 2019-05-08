@@ -11,15 +11,15 @@ def initDB(fileInQuestion): #database initDB
 
 		conn = sqlite3.connect(fileInQuestion + '.db') #THIS DOES NOT WORK
 		c = conn.cursor()
-		
+		return conn, c
 	else: #it does not exist
 	
 		conn = sqlite3.connect(fileInQuestion + '.db') #THIS DOES NOT WORK
 		c = conn.cursor()
-		
 		print("Did not find database, making new...") #alert console
 		c.execute('''CREATE TABLE itemLoggedIn (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text)''') #create a table for items in
 		c.execute('''CREATE TABLE itemLoggedOut (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text)''') #create a table for items out
+	return conn, c
 
 def addItem(content):
 	c.executemany('INSERT INTO itemLoggedIn VALUES (?,?,?,?,?,?,?)', content) #insert content list into in
