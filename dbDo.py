@@ -22,17 +22,21 @@ def initDB(fileInQuestion): #database initDB
 		return conn, c
 
 def addItem(content, database):
-	c.executemany('INSERT INTO itemLoggedIn VALUES (?,?,?,?,?,?,?)', content) #insert content list into in
-	conn.commit() #commit the change to the database
-
+	#c.executemany('INSERT INTO itemLoggedIn VALUES (?,?,?,?,?,?,?)', content) #insert content list into in
+	#conn.commit() #commit the change to the database
+	print(content)
+	
+	
 def deleteItem(content):
 	#receive an item name
 	#remove the line
-	conn.commit() #commit the change to the database
+	#conn.commit() #commit the change to the database
+	print(content)
 	
 def queryAll(table):
-	c.execute('SELECT * FROM table') #Select everything
-	print(c.fetchall())
+	#c.execute('SELECT * FROM table') #Select everything
+	print(table)
+	#print(c.fetchall())
 	
 def query(content):
 	print("nothing")
