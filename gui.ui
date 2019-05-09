@@ -36,6 +36,7 @@
             <child>
               <object class="ttk.Entry" id="loginEntry">
                 <property name="text" translatable="yes">Jeff</property>
+                <property name="textvariable">string:loginEntry</property>
                 <layout>
                   <property name="column">2</property>
                   <property name="propagate">True</property>
@@ -45,6 +46,7 @@
             </child>
             <child>
               <object class="ttk.Button" id="loginButton">
+                <property name="command">login</property>
                 <property name="text" translatable="yes">login</property>
                 <layout>
                   <property name="column">3</property>
@@ -65,6 +67,7 @@
                 </layout>
                 <child>
                   <object class="ttk.Combobox" id="checkInBox">
+                    <property name="textvariable">string:checkInSelection</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -85,6 +88,7 @@
                 <child>
                   <object class="ttk.Entry" id="returningUser">
                     <property name="text" translatable="yes">Jeff</property>
+                    <property name="textvariable">string:returningUser</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -99,6 +103,28 @@
                       <property name="column">2</property>
                       <property name="propagate">True</property>
                       <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="checkInButton">
+                    <property name="command">checkIn</property>
+                    <property name="text" translatable="yes">Check In</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="checkInMemo">
+                    <property name="text" translatable="yes">Memo</property>
+                    <property name="textvariable">string:checkInMemo</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
                     </layout>
                   </object>
                 </child>
@@ -144,6 +170,7 @@
                 </layout>
                 <child>
                   <object class="ttk.Combobox" id="checkOutBox">
+                    <property name="textvariable">string:checkOutSelection</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -164,6 +191,7 @@
                 <child>
                   <object class="ttk.Entry" id="issuedUser">
                     <property name="text" translatable="yes">Jeff</property>
+                    <property name="textvariable">string:issuedUser</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -178,6 +206,28 @@
                       <property name="column">2</property>
                       <property name="propagate">True</property>
                       <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="checkOutButton">
+                    <property name="command">checkOut</property>
+                    <property name="text" translatable="yes">Check Out</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="checkOutMemo">
+                    <property name="text" translatable="yes">Memo</property>
+                    <property name="textvariable">string:checkOutMemo</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
                     </layout>
                   </object>
                 </child>
@@ -223,6 +273,7 @@
                 </layout>
                 <child>
                   <object class="ttk.Entry" id="itemname">
+                    <property name="textvariable">string:newItemName</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -242,6 +293,7 @@
                 </child>
                 <child>
                   <object class="ttk.Combobox" id="newCondition">
+                    <property name="textvariable">string:newItemCondition</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -261,6 +313,7 @@
                 </child>
                 <child>
                   <object class="ttk.Entry" id="memoEntry">
+                    <property name="textvariable">string:newItemMemo</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -271,6 +324,7 @@
                 <child>
                   <object class="ttk.Entry" id="setNumber">
                     <property name="text" translatable="yes">0</property>
+                    <property name="textvariable">int:newItemNumber</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -300,6 +354,7 @@
                 </child>
                 <child>
                   <object class="ttk.Button" id="addItemButton">
+                    <property name="command">newItem</property>
                     <property name="text" translatable="yes">Add</property>
                     <layout>
                       <property name="column">2</property>
@@ -322,6 +377,7 @@
                 </layout>
                 <child>
                   <object class="ttk.Combobox" id="removableItemSelection">
+                    <property name="textvariable">string:removeItemSelection</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -332,6 +388,7 @@
                 <child>
                   <object class="ttk.Entry" id="numberOfItemsRemoved">
                     <property name="text" translatable="yes">0</property>
+                    <property name="textvariable">int:itemRemovalNumber</property>
                     <layout>
                       <property name="column">1</property>
                       <property name="propagate">True</property>
@@ -361,6 +418,7 @@
                 </child>
                 <child>
                   <object class="ttk.Button" id="removeItemButton">
+                    <property name="command">removeItem</property>
                     <property name="text" translatable="yes">Remove</property>
                     <layout>
                       <property name="column">2</property>
@@ -369,6 +427,17 @@
                     </layout>
                   </object>
                 </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Treeview" id="fullTree">
+                <property name="height">1</property>
+                <property name="selectmode">extended</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">2</property>
+                </layout>
               </object>
             </child>
           </object>
