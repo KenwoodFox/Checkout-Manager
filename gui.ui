@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object class="ttk.Notebook" id="parentWidget">
+    <property name="height">500</property>
+    <property name="width">500</property>
+    <layout>
+      <property name="column">0</property>
+      <property name="padx">8</property>
+      <property name="pady">8</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+    </layout>
+    <child>
+      <object class="ttk.Notebook.Tab" id="checkInTab">
+        <property name="text" translatable="yes">Check In</property>
+        <child>
+          <object class="ttk.Labelframe" id="Labelframe_7">
+            <property name="height">200</property>
+            <property name="text" translatable="yes">Check In an Item</property>
+            <property name="width">200</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="Label_6">
+                <property name="text" translatable="yes">Please imput your name and press "login"</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Entry" id="loginEntry">
+                <property name="text" translatable="yes">Jeff</property>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="propagate">True</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="loginButton">
+                <property name="text" translatable="yes">login</property>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="propagate">True</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Labelframe" id="Labelframe_8">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Check In</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">2</property>
+                </layout>
+                <child>
+                  <object class="ttk.Combobox" id="checkInBox">
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_11">
+                    <property name="text" translatable="yes">Item to Check in</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="returningUser">
+                    <property name="text" translatable="yes">Jeff</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_12">
+                    <property name="text" translatable="yes">Name of return</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Treeview" id="itemsCheckedOutTree">
+                <property name="height">16</property>
+                <property name="selectmode">extended</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Notebook.Tab" id="checkOutTab">
+        <property name="text" translatable="yes">Check Out</property>
+        <child>
+          <object class="ttk.Labelframe" id="Labelframe_9">
+            <property name="height">200</property>
+            <property name="text" translatable="yes">Check Out an Item</property>
+            <property name="width">200</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+            <child>
+              <object class="ttk.Labelframe" id="Labelframe_10">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Check In</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">2</property>
+                </layout>
+                <child>
+                  <object class="ttk.Combobox" id="checkOutBox">
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_14">
+                    <property name="text" translatable="yes">Item to Check out</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="issuedUser">
+                    <property name="text" translatable="yes">Jeff</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_15">
+                    <property name="text" translatable="yes">User Being Issued</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Treeview" id="itemsCheckedIn">
+                <property name="height">16</property>
+                <property name="selectmode">extended</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Notebook.Tab" id="inventoryTab">
+        <property name="text" translatable="yes">Inventory Management</property>
+        <child>
+          <object class="ttk.Labelframe" id="inventoryFrame">
+            <property name="height">200</property>
+            <property name="text" translatable="yes">Mannage Items</property>
+            <property name="width">200</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+            <child>
+              <object class="ttk.Labelframe" id="newItemFrame">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Add Items to Database</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="propagate">True</property>
+                  <property name="row">1</property>
+                </layout>
+                <child>
+                  <object class="ttk.Entry" id="itemname">
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_4">
+                    <property name="text" translatable="yes">Item Name</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Combobox" id="newCondition">
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_5">
+                    <property name="text" translatable="yes">Item Condition</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="memoEntry">
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="setNumber">
+                    <property name="text" translatable="yes">0</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_7">
+                    <property name="text" translatable="yes">Number of items</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_10">
+                    <property name="text" translatable="yes">Memo</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="addItemButton">
+                    <property name="text" translatable="yes">Add</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Labelframe" id="removeItemFrame">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Remove items from database</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="propagate">True</property>
+                  <property name="row">1</property>
+                </layout>
+                <child>
+                  <object class="ttk.Combobox" id="removableItemSelection">
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="numberOfItemsRemoved">
+                    <property name="text" translatable="yes">0</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_8">
+                    <property name="text" translatable="yes">Item to Remove</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Label_9">
+                    <property name="text" translatable="yes">Number of items</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="removeItemButton">
+                    <property name="text" translatable="yes">Remove</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
