@@ -5,7 +5,6 @@ except:
     import Tkinter as tk  # for python 2
 import pygubu
 
-
 class Application:
     def __init__(self, master):
 
@@ -22,4 +21,5 @@ class Application:
 if __name__ == '__main__':
     root = tk.Tk()
     app = Application(root)
+    root.title("Inventory Management Tool Version 0.1Alpha") #Set title
     root.mainloop()

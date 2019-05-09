@@ -135,7 +135,7 @@
             <child>
               <object class="ttk.Labelframe" id="Labelframe_10">
                 <property name="height">200</property>
-                <property name="text" translatable="yes">Check In</property>
+                <property name="text" translatable="yes">Check Out</property>
                 <property name="width">200</property>
                 <layout>
                   <property name="column">1</property>
