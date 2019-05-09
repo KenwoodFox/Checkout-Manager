@@ -15,6 +15,8 @@ CONDITIONS = [
 home = Tk() #Home is an instance of Tk
 home.title("Inventory Management Tool Version 0.1Alpha") #Set title
 
+dbDo.initDB("manifest")
+
 homeTabs = ttk.Notebook(home) #add tabs to home
 checkTab = ttk.Frame(homeTabs) #add tab for checking in and out items
 itemTab = ttk.Frame(homeTabs) #add tabs foor mannaging inventory
@@ -25,7 +27,7 @@ homeTabs.pack(expand=1, fill='both')
 
 menu = Menu(home) #put a menu on home
 loadNewFile = Menu(menu)
-loadNewFile.add_command(label='Open', command=src.loadNewFile("manifest"))
+loadNewFile.add_command(label='Open', command=dbDo.initDB("manifest"))
 dropdownExit = Menu(menu) #add a exit button
 dropdownExit.add_command(label='Exit', command=exit)
 menu.add_cascade(label='File', menu=dropdownExit) #order exit under file
@@ -55,7 +57,7 @@ itemTree.heading("recepiant", text="Recepiant")
 itemTree.heading("memo", text="Memo")
 itemTree.heading("date", text="Date")
 
-itemTree.insert("" , 0, text="REEE", values=("Example Item Name","Jeff","Jeff","No Memo","qty","No date as of this date"))
+itemTree.insert("" , 0, text="", values=("Example Item Name","Jeff","Jeff","No Memo","qty","No date as of this date"))
 
 #id2 = itemTree.insert("", 1, "dir2", text="Dir 2")
 #itemTree.insert(id2, "end", "dir 2", text="sub dir 2", values=("2A","2B"))
@@ -81,17 +83,17 @@ imputDropDown = StringVar(home)
 imputDropDown.set(CONDITIONS[0]) # default value
 
 itemNameTxt = Entry(itemTab,width=15) #Normal Text Box
-conditionMenu = OptionMenu(home, imputDropDown, *CONDITIONS) #Dropdown box
+conditionMenu = OptionMenu(menu, imputDropDown, *CONDITIONS) #Dropdown box
 memoTxt = Entry(itemTab,width=15) #Normal Text Box
 setOfBox = Spinbox(itemTab, from_=0, to=10,width=15)
 itemNameTxt.grid(column=2,row=2)
-conditionMenu.grid(column=2, row=3) #This needs to be fixed!!!!!
+#conditionMenu.grid(column=2, row=3) #This needs to be fixed!!!!!
 memoTxt.grid(column=2,row=4)
 setOfBox.grid(column=2,row=5)
 conditionMenu.pack()
 
-#setNewItem = Button(itemTab, text="Add Item", command=dbDo.addItem("null", "manifest"):)
-#setNewItem.grid(column=2, row=1)
+setNewItem = Button(itemTab, text="Add Item", command=dbDo.addItem("null", "manifest", conn, c))
+setNewItem.grid(column=2, row=1)
 
 home.mainloop()
 #conn.close() #close connection

@@ -13,36 +13,36 @@ def initDB(fileInQuestion): #database initDB
 		c = conn.cursor()
 		return conn, c
 	else: #it does not exist
-	
+
 		conn = sqlite3.connect(fileInQuestion + '.db') #THIS DOES NOT WORK
-		c = conn.cur/sor()
+		c = conn.cursor()
 		print("Did not find database, making new...") #alert console
 		c.execute('''CREATE TABLE itemLoggedIn (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text)''') #create a table for items in
 		c.execute('''CREATE TABLE itemLoggedOut (itemName text, condition text, Memo text, setOf real, date text, issuer text, user text)''') #create a table for items out
 		return conn, c
 
-def addItem(content, database):
-	#c.executemany('INSERT INTO itemLoggedIn VALUES (?,?,?,?,?,?,?)', content) #insert content list into in
-	#conn.commit() #commit the change to the database
+def addItem(content, database, conn, c):
+	c.executemany('INSERT INTO itemLoggedIn VALUES (?,?,?,?,?,?,?)', content) #insert content list into in
+	conn.commit() #commit the change to the database
 	print(content)
-	
-	
-def deleteItem(content):
+
+
+def deleteItem(content, conn, c):
 	#receive an item name
 	#remove the line
 	#conn.commit() #commit the change to the database
 	print(content)
-	
+
 def queryAll(table):
 	#c.execute('SELECT * FROM table') #Select everything
 	print(table)
 	#print(c.fetchall())
-	
+
 def query(content):
 	print("nothing")
 	#receive a list
 	#select all matching entries
 	#return a much larger list
-	
+
 #def checkout
 #def checkin
