@@ -23,7 +23,7 @@ class Cribware:
         self.builder = builder = pygubu.Builder()   #1: Create a builder
         builder.add_from_file('gui.ui') #2: Load an ui file
         self.mainwindow = builder.get_object('parentWidget', master)    #3: Create the widget using a master as parent
-        inventoryTree = builder.get_object('fullTree')
+        #inventoryTree = builder.get_object('fullTree')
         builder.connect_callbacks(self)
 
         callbacks = {
@@ -38,22 +38,23 @@ class Cribware:
 
     def login(self):
         #messagebox.showinfo('Debug', self.builder.tkvariables['loginEntry'].get())
-        currentUser = loginEntry
+        currentUser = self.builder.tkvariables['loginEntry'].get()
 
     def checkIn(self):
-        print("checkin")
+        checkedIn.insert({'item': self.builder.tkvariables['checkInSelection'].get(),'returnUser': self.builder.tkvariables['returningUser'].get(),'memo':self.builder.tkvariables['checkInMemo'].get()})
+
         #debug = [self.builder.tkvariables['checkInSelection'].get(), self.builder.tkvariables['returningUser'].get(),self.builder.tkvariables['checkInMemo'].get()]
         #messagebox.showinfo('Debug', debug)
 
     def checkOut(self):
-        debug = [self.builder.tkvariables['checkOutSelection'].get(), self.builder.tkvariables['issuedUser'].get(),self.builder.tkvariables['checkOutMemo'].get()]
-        messagebox.showinfo('Debug', debug)
+        checkedOut.insert({'item': self.builder.tkvariables['checkOutSelection'].get(),'issuedUser': self.builder.tkvariables['issuedUser'].get(),'memo':self.builder.tkvariables['checkOutMemo'].get()})
+
+        #debug = [self.builder.tkvariables['checkOutSelection'].get(), self.builder.tkvariables['issuedUser'].get(),self.builder.tkvariables['checkOutMemo'].get()]
+        #messagebox.showinfo('Debug', debug)
 
     def newItem(self):
-        #debug = [self.builder.tkvariables['newItemName'].get(), self.builder.tkvariables['newItemCondition'].get(),self.builder.tkvariables['newItemMemo'].get(),self.builder.tkvariables['newItemNumber'].get()]
-        #messagebox.showinfo('Debug', debug)
         checkedIn.insert({'itemName': self.builder.tkvariables['newItemName'].get(), 'condition':  self.builder.tkvariables['newItemCondition'].get(), 'newItemMemo' : self.builder.tkvariables['newItemMemo'].get(), 'qty' : self.builder.tkvariables['newItemNumber'].get()})
-        inventoryTree.insert('', 'end', 'widgets', text='Widget Tour')
+        #inventoryTree.insert('', 'end', 'widgets', text='Widget Tour')
 
     def removeItem(self):
         debug = [self.builder.tkvariables['removeItemSelection'].get(), self.builder.tkvariables['itemRemovalNumber'].get()]
